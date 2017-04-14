@@ -2,13 +2,13 @@ require_relative "board"
 require_relative "player"
 
 puts "Player Two, X or O?"
-player_type = gets.chomp.upcase
+player_symbol = gets.chomp.upcase
 
-if player_type == "X"
-  player_two = Player.new(player_type)
+if player_symbol == "X"
+  player_two = Player.new(player_symbol)
   player_one = Player.new("O")
-elsif player_type == "O"
-  player_two = Player.new(player_type)
+elsif player_symbol == "O"
+  player_two = Player.new(player_symbol)
   player_one = Player.new("X")
 else
   "Please provide valid input"
@@ -21,5 +21,5 @@ board.display
 
 puts "Please choose a move"
 player_one_move = gets.chomp.downcase
-board.find_position!(player_one_move, player_one.player_type)
+board.find_position!(player_one_move, player_one.player_symbol)
 board.display
