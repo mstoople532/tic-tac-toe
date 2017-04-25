@@ -20,11 +20,10 @@ class Board
     puts
   end
 
-  def find_position!(input, player_symbol)
+  def make_a_move!(input, player_symbol)
     input = input.chars
     row = input.first.to_sym
     column = input.last.to_i - 1
-    cell = @layout[row][column]
-    layout[cell] = player_symbol
+    @layout[row][column] = player_symbol
   end
 end
