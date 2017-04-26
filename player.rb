@@ -1,4 +1,5 @@
 require "set"
+require_relative "board"
 
 WINNING_MOVES = [
   Set["a1", "a2", "a3"],
@@ -21,6 +22,14 @@ class Player
   end
 
   def player_win?
-    WINNING_MOVES.map { |set| set.subset?(@moveset) }.any?
+    WINNING_MOVES.any? { |set| set.subset?(@moveset) }
+  end
+
+  def player_move(board)
+    puts "#{self.player_type}, please choose a move"
+    player_move = gets.chomp.downcase
+    board.remove_available_move!(player_move)
+    board.make_a_move!(player_move, self.player_symbol)
+    self.set_move(player_move)
   end
 end
