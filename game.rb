@@ -2,15 +2,19 @@ require_relative "board"
 require_relative "player"
 
 puts "Player Two, X or O?"
-player_symbol = gets.chomp.upcase
 
-if player_symbol == "X"
-  player_two = Player.new(player_symbol, "Player two")
-  player_one = Player.new("O", "Player one")
-elsif player_symbol == "O"
-  player_two = Player.new(player_symbol, "Player two")
-  player_one = Player.new("X", "Player one")
-else
+while player_symbol = gets.chomp.upcase
+  if player_symbol == "X"
+    player_two = Player.new(player_symbol, "Player two")
+    player_one = Player.new("O", "Player one")
+    break
+  elsif player_symbol == "O"
+    player_two = Player.new(player_symbol, "Player two")
+    player_one = Player.new("X", "Player one")
+    break
+  else
+    puts "Player Two, X or O?"
+  end
 end
 
 board = Board.new
@@ -37,6 +41,7 @@ until board.available_moves.empty?
     break
   elsif board.available_moves.empty?
     puts "Tie game!"
+    board.display
     break
   end
   move_count += 1
