@@ -7,7 +7,7 @@ WINNING_MOVES = [
   Set["c1", "c2", "c3"],
   Set["a1", "b2", "c3"],
   Set["c1", "b2", "a3"]
-]
+].freeze
 
 class Player
   attr_accessor :player_symbol, :moveset, :player_type
@@ -25,9 +25,7 @@ class Player
     WINNING_MOVES.any? { |set| set.subset?(@moveset) }
   end
 
-  def player_move(board)
-    puts "#{self.player_type}, please choose a move"
-    player_move = gets.chomp.downcase
+  def player_move(board, player_move)
     board.remove_available_move!(player_move)
     board.make_a_move!(player_move, self.player_symbol)
     self.set_move(player_move)

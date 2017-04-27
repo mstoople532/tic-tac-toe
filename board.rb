@@ -28,6 +28,10 @@ class Board
     @layout[row][column] = player_symbol
   end
 
+  def move_unavailable?(input)
+    !@available_moves.include?(input)
+  end
+
   def remove_available_move!(input)
     @available_moves.delete(input)
   end

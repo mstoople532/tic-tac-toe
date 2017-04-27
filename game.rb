@@ -11,10 +11,7 @@ elsif player_symbol == "O"
   player_two = Player.new(player_symbol, "Player two")
   player_one = Player.new("X", "Player one")
 else
-  "Please provide valid input"
 end
-
-# players = [player_one, player_two]
 
 board = Board.new
 move_count = 0
@@ -28,7 +25,13 @@ until board.available_moves.empty?
                      player_two
                    end
 
-  current_player.player_move(board)
+  puts "#{current_player.player_type}, please choose a move"
+  player_move = gets.chomp.downcase
+  if board.move_unavailable?(player_move)
+    puts "Move already taken, try again!"
+    redo
+  end
+  current_player.player_move(board, player_move)
   if current_player.player_win?
     puts "#{current_player.player_type} wins!"
     break
@@ -38,7 +41,3 @@ until board.available_moves.empty?
   end
   move_count += 1
 end
-
-# elsif !@available_moves.include?(input)
-#   puts "Please put valid move"
-# else
