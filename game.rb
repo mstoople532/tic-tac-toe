@@ -1,30 +1,30 @@
-require_relative "board"
-require_relative "player"
+require_relative 'board'
+require_relative 'player'
 
 class Game
-  def start!
+  def self.start!
     player_selector
     gameplay
   end
 
-  def player_selector
-    puts "Player Two, X or O?"
+  def self.player_selector
+    puts 'Player Two, X or O?'
     while player_symbol = gets.chomp.upcase
-      if player_symbol == "X"
-        @player_two = Player.new(player_symbol, "Player two")
-        @player_one = Player.new("O", "Player one")
+      if player_symbol == 'X'
+        @player_two = Player.new(player_symbol, 'Player two')
+        @player_one = Player.new('O', 'Player one')
         break
-      elsif player_symbol == "O"
-        @player_two = Player.new(player_symbol, "Player two")
-        @player_one = Player.new("X", "Player one")
+      elsif player_symbol == 'O'
+        @player_two = Player.new(player_symbol, 'Player two')
+        @player_one = Player.new('X', 'Player one')
         break
       else
-        puts "Player Two, X or O?"
+        puts 'Player Two, X or O?'
       end
     end
   end
 
-  def gameplay
+  def self.gameplay
     board = Board.new
     move_count = 0
 
@@ -32,15 +32,15 @@ class Game
       board.display
 
       current_player = if move_count.even?
-                         player_one
+                         @player_one
                        else
-                         player_two
+                         @player_two
                        end
 
       puts "#{current_player.player_type}, please choose a move"
       player_move = gets.chomp.downcase
       if board.move_unavailable?(player_move)
-        puts "Move unavailable, try again!"
+        puts 'Move unavailable, try again!'
         redo
       end
       current_player.player_move(board, player_move)
@@ -48,7 +48,7 @@ class Game
         puts "#{current_player.player_type} wins!"
         break
       elsif board.available_moves.empty?
-        puts "Tie game!"
+        puts 'Tie game!'
         board.display
         break
       end
