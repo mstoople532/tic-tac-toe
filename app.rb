@@ -1,3 +1,6 @@
-require_relative "game"
+require_relative 'game'
+require 'sinatra'
 
-Game.start!
+get '/' do
+  # Game.start!
+end
