@@ -1,0 +1,21 @@
+body{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+.board{
+  height: 40em;
+  width: 40em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.cell{
+  height: 30%;
+  width: 30%;
+  border: 3px black solid;
+  background-color: red;
+}
