@@ -5,8 +5,8 @@ body{
   align-items: center;
 }
 .board{
-  height: 40em;
-  width: 40em;
+  height: 30em;
+  width: 30em;
   display: flex;
   justify-content: center;
   align-content: center;
