@@ -5,12 +5,11 @@ function addEventlistenerToCells (className, event, fn) {
   }
 }
 
-function grabCellPosition () {
-  var cell = Event.target.position
-  console.log(cell)
+function grabCellPosition (event) {
+  var cell = event.target.getAttribute('data-position')
+  return cell
 }
 addEventlistenerToCells('cell', 'click', grabCellPosition)
-
 // fetch("/api/board")
 // .then(req => req.json())
 // .then(data => {
